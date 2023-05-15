@@ -1,0 +1,5 @@
+conda create -n seg_anything python=3.8 
+conda activate seg_anything
+
+
+CUDA_VISIBLE_DEVICES=0 python test.py

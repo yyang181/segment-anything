@@ -233,7 +233,24 @@ class SamPredictor:
             dense_prompt_embeddings=dense_embeddings,
             multimask_output=multimask_output,
         )
-
+        
+        '''
+        import pickle
+        encoder_input = [points,
+            boxes,
+            mask_input,]
+        decoder_input= [self.features,
+            self.model.prompt_encoder.get_dense_pe(),
+            sparse_embeddings,
+            dense_embeddings,
+            multimask_output,]
+        # Open a file and use dump()
+        with open('file.pkl', 'wb') as file:
+            # A new file will be created
+            pickle.dump([encoder_input, decoder_input], file)
+        assert 1==0
+        '''
+        
         # Upscale the masks to the original image resolution
         masks = self.model.postprocess_masks(low_res_masks, self.input_size, self.original_size)
 
