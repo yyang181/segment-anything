@@ -36,7 +36,9 @@ sam.to(device=device)
 mask_generator = SamAutomaticMaskGenerator(sam)
 # mask_generator = SamAutomaticMaskGenerator(build_sam(checkpoint="checkpoints/sam_vit_h_4b8939.pth"))
 
-image = cv2.imread('/home/yyang181/github/segment-anything/1.jpg')
+# image = cv2.imread('/home/yyang181/github/segment-anything/1.jpg')
+image = cv2.imread('/media/yyang181/Elements/data/20240318_labelmewithsegmentanything_generateSEGmaskForXMen/frame0811.png')
+
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 
@@ -82,8 +84,10 @@ masks = mask_generator.generate(image)
 print(len(masks))
 print(masks[0].keys())
 
-# plt.figure(figsize=(20,20))
-# plt.imshow(image)
-# show_anns(masks)
-# plt.axis('off')
-# plt.show() 
+plt.figure(figsize=(20,20))
+plt.imshow(image)
+show_anns(masks)
+plt.axis('off')
+plt.show() 
+# save the image to current dir as 'output.png'
+plt.savefig('/media/yyang181/Elements/data/20240318_labelmewithsegmentanything_generateSEGmaskForXMen/output.png', bbox_inches='tight', pad_inches=0)
